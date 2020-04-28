@@ -1,4 +1,3 @@
-#include<conio.h>
 #include<stdio.h>
 #include<process.h>
 #include<string.h>
@@ -6,16 +5,48 @@
 #include<windows.h>
 #include"student.h"
 #include"admin.h"
+#include"mess.h"
 
 stud *head_s=NULL;
 
 void save(stud *head)
 {
     FILE *fp = fopen("details.dat","a");
-    while (head)
+    stud *temp=head;
+    while (temp)
     {
-        fwrite( &head->data, sizeof(head->data), 1, fp );
-        head = head->next;
+        fwrite( &(temp->data), sizeof(temp->data), 1, fp );
+        temp = temp->next;
+    }
+    fclose(fp);
+}
+
+void fromfile_stud(stud **head)
+{
+    FILE *fp = fopen("details.dat","r+");
+    data_s temp;
+    stud *ptr;
+    *head=NULL;
+
+    while (fread(&temp,sizeof(temp),1,fp))
+    {
+        ptr=(stud*)malloc(sizeof(stud));
+        ptr->data=temp;
+        if(*head==NULL)
+        {
+            ptr->next=*head;
+            *head=ptr;
+        }
+        else
+        {
+            ptr->next=NULL;
+            stud *tmp=*head;
+            while((tmp->next)!=NULL)
+            {
+                tmp=tmp->next;
+            }
+                tmp->next=ptr;
+        }
     }
     fclose(fp);
 }
@@ -37,14 +68,14 @@ void signup(stud **head_s)
 		gets(name);
 		strcpy(temp.name,name);
 
-		printf("\n\n\t\t\t\t\t\tCARD NO. : : ");
+		printf("\n\n\t\t\t\t\t\tCARD NO. : ");
 		scanf("%d",&c);
 		temp.card=c;
 
 		printf("\n\n\t\t\t\t\t\tPASSWORD : ");
 		gets(name);
 		gets(name);
-		strcpy(temp.name,name);
+		strcpy(temp.pass,name);
 
 		printf("\n\n\t\t\t\t\t\tINITIAL BAL. : ");
 		scanf("%d",&c);
@@ -73,23 +104,50 @@ void signup(stud **head_s)
 }
 
 
-/*void login( )
+void login(stud *head)
 {
-        printf("\t\t\t\t\t\tLOGIN\n");
-		printf("\n\n\t\t\t\t\tUSERNAME : ");
-		gets(name);
-		gets(name);
-		printf("\n\n\t\t\t\t\tPASSWORD : ");
-		gets(name);
-		printf("\n\n=====================================================SIGNED-IN :)=======================================================");
+    system("cls");
+    int c,flag=0;
+    char pass[10];
+    fromfile_stud(&head);
 
-}*/
+        printf("\n\tLOGIN");
+        printf("\n\n\tCARD NO. : ");
+        scanf("%d",&c);
+        printf("\n\n\tPASSWORD : ");
+        gets(pass);
+        gets(pass);
+        while(head)
+        {
+            if(head->data.card==c)
+            {
+                if(strcmp(head->data.pass,pass)==0)
+                {
+                    mess_menu(c);
+                    return;
+                }
+                else
+                {
+                    printf("\a\t\n:x WRONG PASSWORD !!!");
+                    flag=1;
+                    login(head);
+                    break;
+                }
+            }
+            head=head->next;
+        }
+        if(flag==0)
+        {
+            printf("\a\t\n:x CARD DOESN'T EXIST !!!");
+            login(head);
+        }
+}
 
 void student_menu()
 {
 	system("cls");
-	int i,ch;
-	char pass[10];
+	int ch;
+	stud *head=NULL;
 
 		printf("\n\t1. LOGIN");
 		printf("\n\n\t2. SIGN UP");
@@ -97,18 +155,12 @@ void student_menu()
 		printf("\n\n\tPlease Select Your Option : ");
 		scanf("%d",&ch);
 		switch(ch)
-		{	case 2:signup(&head_s);
+		{	case 2: signup(&head_s);
 				 break;
-			case 1: system("cls");
-            printf("\n\t1. LOGIN\n");
-            printf("\n\n\tCARD NO. : ");
-            scanf("%d",&i);
-            printf("\n\n\tPASSWORD : ");
-            gets(pass);
-		   // login_menu(name,pass);
+			case 1: login(head);
 				 break;
 			case 3: return;
-			default :printf("\a");
+			default: printf("\a");
 		}
 		student_menu();
 }

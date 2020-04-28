@@ -1,10 +1,10 @@
-#include<conio.h>
 #include<stdio.h>
 #include<process.h>
 #include<string.h>
 #include<unistd.h>
 #include<windows.h>
 #include"admin.h"
+#include"student.h"
 
 dish *head_d=NULL;
 
@@ -49,8 +49,6 @@ void fromfile_dish(dish **head)
     }
     fclose(fp);
 }
-
-
 
 void add(dish **head_d)
 {
@@ -107,22 +105,41 @@ void menu(dish *head)
     printf("=========================================================================================\n");
     while(head)
     {
-        printf("\n\t%d\t\t\t%s\t\tRs.%d",head->info.code,head->info.d_name,head->info.price);
-        printf("\n------------------------------------------------------------------------------------");
+        printf("\n\t%-5d\t\t\t%-10s\t\tRs.%d",head->info.code,head->info.d_name,head->info.price);
+        printf("\n-----------------------------------------------------------------------------------------");
         head=head->next;
     }
 
-	for(int i=0;i<50;i++)
-        usleep(100000);
+	printf("\n\n");
+	system("pause");
 
 }
 
+void all_stud(stud *head)
+{
+    system("cls");
+    fromfile_stud(&head);
+    printf("\n\t\t\tDETAILS\n\n");
+    printf("============================================================================================\n");
+    printf("\n\tCARD NO.\t\tNAME\t\t\tPASSWORD\t\tCARD BALANCE\n");
+    printf("\n============================================================================================\n");
+    while(head)
+    {
+        printf("\n\t%d\t\t\t%-10s\t\t%-10s\t\tRs.%d",head->data.card,head->data.name,head->data.pass,head->data.bal);
+        printf("\n--------------------------------------------------------------------------------------------");
+        head=head->next;
+    }
+
+	printf("\n\n");
+	system("pause");
+}
 
 void admin_menu()
 {
 	system("cls");
 	int ch;
 	dish *head=NULL;
+	stud *HEAD=NULL;
 
         printf("\n\tADMIN\n");
 		printf("\n\n\t1. ADD DISH");
@@ -132,7 +149,7 @@ void admin_menu()
 		printf("\n\n\tPlease Select Your Option : ");
 		scanf("%d",&ch);
 		switch(ch)
-		{	case 3://signup(&head_s);
+		{	case 3:all_stud(HEAD);
 				 break;
 			case 1: add(&head_d);
 				 break;

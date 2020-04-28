@@ -13,6 +13,5 @@ typedef struct dish{
 void menu(dish *);
 void add(dish **);
 void admin_menu();
-//void all_stud();
 
 
