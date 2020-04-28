@@ -38,18 +38,10 @@ void mess_menu(int n)
 		printf("\n\n\tPlease Select Your Option : ");
 		scanf("%d",&ch);
 		switch(ch)
-		{	//case 2:signup(&head_s);
-			//	 break;
-			/*case 1: system("cls");
-            printf("\n\t1. LOGIN\n");
-            printf("\n\n\tCARD NO. : ");
-            scanf("%d",&i);
-            printf("\n\n\tPASSWORD : ");
-            gets(pass);
-		   // login_menu(name,pass);
-				 break;*/
+		{	//case 2:
+			//case 1:
 			case 3:	card_details(head,n);
-                break;
+               		 break;
 			case 4: return;
 			default :printf("\a");
 		}
