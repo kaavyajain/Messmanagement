@@ -11,6 +11,7 @@
 void donate_menu()
 {
     system("cls");
+    system("color b");
     int ch,c;
 
 		printf("\n\t\t~~~DONATE A MEAL WORTH Rs.50 AND CELEBRATE THE SPIRIT OF HUMANITY!~~~");
