@@ -10,6 +10,7 @@ typedef struct stud{
 
 
 void signup(stud **head_s);
-//void login(stud **);
+void fromfile_stud(stud **);
+void save_stud(stud *head);
 void guest_menu();
 void student_menu();

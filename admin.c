@@ -2,7 +2,7 @@
 #include<process.h>
 #include<string.h>
 #include<unistd.h>
-#include<windows.h>
+#include<stdlib.h>
 #include"admin.h"
 #include"student.h"
 
@@ -95,8 +95,9 @@ void add(dish **head_d)
         usleep(100000);
 }
 
-void menu(dish *head)
+void menu()
 {
+    dish *head;
     system("cls");
     fromfile_dish(&head);
     printf("\n\tMENU\n\n");
@@ -115,9 +116,10 @@ void menu(dish *head)
 
 }
 
-void all_stud(stud *head)
+void all_stud()
 {
     system("cls");
+    stud *head;
     fromfile_stud(&head);
     printf("\n\t\t\tDETAILS\n\n");
     printf("============================================================================================\n");
@@ -137,11 +139,10 @@ void all_stud(stud *head)
 void admin_menu()
 {
 	system("cls");
+	system("color c");
 	int ch;
-	dish *head=NULL;
-	stud *HEAD=NULL;
 
-        printf("\n\tADMIN\n");
+        printf("\n\n\tADMIN\n");
 		printf("\n\n\t1. ADD DISH");
 		printf("\n\n\t2. CURRENT MENU");
 		printf("\n\n\t3. ALL STUDENT DETAILS");
@@ -149,11 +150,11 @@ void admin_menu()
 		printf("\n\n\tPlease Select Your Option : ");
 		scanf("%d",&ch);
 		switch(ch)
-		{	case 3:all_stud(HEAD);
+		{	case 3:all_stud();
 				 break;
 			case 1: add(&head_d);
 				 break;
-            case 2:menu(head);
+            case 2:menu();
 				 break;
 			case 4: return;
 			default: printf("\a");

@@ -8,9 +8,8 @@ typedef struct dish{
     struct dish *next;
 }dish;
 
-
-
-void menu(dish *);
+void menu();
+void fromfile_dish(dish **head);
 void add(dish **);
 void admin_menu();
 

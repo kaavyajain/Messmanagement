@@ -2,14 +2,14 @@
 #include<process.h>
 #include<string.h>
 #include<unistd.h>
-#include<windows.h>
+#include<stdlib.h>
 #include"student.h"
 #include"admin.h"
 #include"mess.h"
 
 stud *head_s=NULL;
 
-void save(stud *head)
+void save_stud(stud *head)
 {
     FILE *fp = fopen("details.dat","a");
     stud *temp=head;
@@ -98,7 +98,7 @@ void signup(stud **head_s)
             }
                 tmp->next=ptr;
         }
-    save(*head_s);
+    save_stud(*head_s);
 	for(int i=0;i<6;i++)
         usleep(100000);
 }
@@ -146,10 +146,12 @@ void login(stud *head)
 void student_menu()
 {
 	system("cls");
+	system("color c");
 	int ch;
 	stud *head=NULL;
 
-		printf("\n\t1. LOGIN");
+		printf("\n\n\tSTUDENT\n");
+		printf("\n\n\t1. LOGIN");
 		printf("\n\n\t2. SIGN UP");
 		printf("\n\n\t3. BACK");
 		printf("\n\n\tPlease Select Your Option : ");
@@ -168,10 +170,11 @@ void student_menu()
 void guest_menu()
 {
 	system("cls");
+	system("color c");
 	int ch;
 	dish *head=NULL;
 
-        printf("\n\tGUEST\n");
+        printf("\n\n\tGUEST\n");
 		printf("\n\n\t1. MENU");
 		printf("\n\n\t2. ORDER");
 		printf("\n\n\t3. GET CARD");
