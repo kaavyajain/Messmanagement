@@ -17,5 +17,5 @@ NISHTHA GUPTA     (1910110260)   : login(), signup(), fromfile_stud(), fromfile_
                  
 PRAKRITI AGARWAL  (1910110277)   : delivery(), all_stud(), payment_guest(), recharge_card()
 
-In addition to this, the debugging, compilation and layout was handled by all of us. Most of the data handling was done by Nishtha Gupta. Everyone came up with suggestions for innovative features and after critical analyzing of all the ideas, we divided the work accordingly and brought the project to totality.
+In addition to this, the debugging, compilation and layout was handled by all of us. Most of the data handling was done by Nishtha Gupta. Everyone came up with suggestions for innovative features and after critically analyzing all the ideas, we divided the work accordingly and brought the project to totality.
 
