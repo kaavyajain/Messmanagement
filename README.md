@@ -1,7 +1,7 @@
 # *** CRAVEZIA MESS MANAGEMENT SYSTEM ***
-### The solution to all your cravings!
+## The solution to all your cravings!
 
->>> HOW TO RUN :::
+> HOW TO RUN:::
 
 In the zip file attached there is a file named “project.cbp”. 
 Thus, to run the project: 
@@ -9,7 +9,7 @@ Thus, to run the project:
 ->Build and Run the opened Code Blocks Project
   (wait for 3-5 seconds if the output doesn't come immediately)
 
-~WORK DISTRIBUTION: The functions made by each group member have been mentioned against their names.
+### ~WORK DISTRIBUTION: The functions made by each group member have been mentioned against their names.
 
 AASTHA DOGRA      (1910110464)   : menu(), add(), health(), order()
                  
