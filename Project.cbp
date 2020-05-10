@@ -41,6 +41,7 @@
 		<Unit filename="mess.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mess.h" />
 		<Unit filename="student.c">
 			<Option compilerVar="CC" />
 		</Unit>

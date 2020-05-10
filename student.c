@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<process.h>
 #include<string.h>
 #include<unistd.h>
 #include<stdlib.h>
@@ -54,33 +53,33 @@ void fromfile_stud(stud **head)
 void signup(stud **head_s)
 {
 		system("cls");
-		int i,c;  char name[10];
+		system("color e");
+		int c;  char name[10];
+		*head_s=NULL;
 
-		for(i=0;i<9;i++)
-            printf("\n");
         data_s temp;
         stud *ptr;
         ptr=(stud*)malloc(1*sizeof(stud));
-		printf("\t\t\t\t\t\t\tSIGN UP\n");
+		printf("\n\n\tSIGN UP\n");
 
-		printf("\n\n\t\t\t\t\t\tNAME : ");
+		printf("\n\n\tNAME : ");
 		gets(name);
 		gets(name);
 		strcpy(temp.name,name);
 
-		printf("\n\n\t\t\t\t\t\tCARD NO. : ");
+		printf("\n\n\tCARD NO. : ");
 		scanf("%d",&c);
 		temp.card=c;
 
-		printf("\n\n\t\t\t\t\t\tPASSWORD : ");
+		printf("\n\n\tPASSWORD : ");
 		gets(name);
 		gets(name);
 		strcpy(temp.pass,name);
 
-		printf("\n\n\t\t\t\t\t\tINITIAL BAL. : ");
+		printf("\n\n\tINITIAL BAL. : ");
 		scanf("%d",&c);
 		temp.bal=c;
-		printf("\n\n=====================================================SIGNED-IN :)=======================================================");
+		printf("\n\n\t\tSIGNED-IN :)");
 
         ptr->data=temp;
         if(*head_s==NULL)
@@ -107,11 +106,12 @@ void signup(stud **head_s)
 void login(stud *head)
 {
     system("cls");
+    system("color e");
     int c,flag=0;
     char pass[10];
     fromfile_stud(&head);
 
-        printf("\n\tLOGIN");
+        printf("\n\n\tLOGIN\n");
         printf("\n\n\tCARD NO. : ");
         scanf("%d",&c);
         printf("\n\n\tPASSWORD : ");
@@ -130,6 +130,8 @@ void login(stud *head)
                 {
                     printf("\a\t\n:x WRONG PASSWORD !!!");
                     flag=1;
+                    for(int i=0;i<16;i++)
+                        usleep(100000);
                     login(head);
                     break;
                 }
@@ -139,14 +141,17 @@ void login(stud *head)
         if(flag==0)
         {
             printf("\a\t\n:x CARD DOESN'T EXIST !!!");
+            for(int i=0;i<16;i++)
+                usleep(100000);
             login(head);
         }
+
 }
 
 void student_menu()
 {
 	system("cls");
-	system("color c");
+	system("color b");
 	int ch;
 	stud *head=NULL;
 
@@ -170,8 +175,8 @@ void student_menu()
 void guest_menu()
 {
 	system("cls");
-	system("color c");
-	int ch;
+	system("color b");
+	int ch,bill;
 	dish *head=NULL;
 
         printf("\n\n\tGUEST\n");
@@ -186,7 +191,9 @@ void guest_menu()
 				 break;
 			case 1: menu(head);
 				 break;
-            case 2:// order();
+            case 2: bill=order();
+                    payment_guest(bill);
+                    health();
 				 break;
 			case 4: return;
 			default :printf("\a");

@@ -1,36 +1,42 @@
 # depslib dependency file v1.0
-1587697306 source:e:\c\project\main.c
-	<conio.h>
+1589113375 source:e:\c\project\main.c
 	<stdio.h>
-	<process.h>
 	<string.h>
 	<unistd.h>
-	<windows.h>
+	<stdlib.h>
 	"student.h"
 	"admin.h"
+	"mess.h"
 
-1587698066 source:e:\c\project\admin.c
-	<conio.h>
+1589113401 source:e:\c\project\admin.c
 	<stdio.h>
-	<process.h>
 	<string.h>
 	<unistd.h>
-	<windows.h>
+	<stdlib.h>
 	"admin.h"
+	"student.h"
 
-1587698206 e:\c\project\admin.h
+1588824203 e:\c\project\admin.h
 
-1587698186 source:e:\c\project\student.c
-	<conio.h>
+1589113374 source:e:\c\project\student.c
 	<stdio.h>
-	<process.h>
 	<string.h>
 	<unistd.h>
-	<windows.h>
+	<stdlib.h>
 	"student.h"
 	"admin.h"
+	"mess.h"
 
-1587667362 e:\c\project\student.h
+1588824203 e:\c\project\student.h
 
-1587618979 source:e:\c\project\mess.c
+1589113401 source:e:\c\project\mess.c
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<stdlib.h>
+	"student.h"
+	"admin.h"
+	"mess.h"
+
+1589111205 e:\c\project\mess.h
 

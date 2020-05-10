@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<process.h>
 #include<string.h>
 #include<unistd.h>
 #include<stdlib.h>
@@ -53,12 +52,14 @@ void fromfile_dish(dish **head)
 void add(dish **head_d)
 {
 		system("cls");
+		system("color e");
 		int c;  char name[10];
+		*head_d=NULL;
         data_d temp;
 
         dish *ptr;
         ptr=(dish*)malloc(1*sizeof(dish));
-		printf("\n\tADD DISH\n");
+		printf("\n\n\tADD DISH\n");
 
 		printf("\n\n\tNAME : ");
 		gets(name);
@@ -72,7 +73,7 @@ void add(dish **head_d)
 		printf("\n\n\tPRICE : ");
 		scanf("%d",&c);
 		temp.price=c;
-		printf("\n\n=====================================================MENU UPDATED=======================================================");
+		printf("\n\n\t\tMENU UPDATED ");
 
         ptr->info=temp;
         if(*head_d==NULL)
@@ -99,8 +100,10 @@ void menu()
 {
     dish *head;
     system("cls");
+    system("color e");
+    system("color ");
     fromfile_dish(&head);
-    printf("\n\tMENU\n\n");
+    printf("\n\n\t\t\tMENU\n\n");
     printf("=========================================================================================\n");
     printf("\tDISH CODE\t\tDISH NAME\t\tPRICE\n");
     printf("=========================================================================================\n");
@@ -119,9 +122,10 @@ void menu()
 void all_stud()
 {
     system("cls");
+    system("color e");
     stud *head;
     fromfile_stud(&head);
-    printf("\n\t\t\tDETAILS\n\n");
+    printf("\n\n\t\t\tDETAILS\n\n");
     printf("============================================================================================\n");
     printf("\n\tCARD NO.\t\tNAME\t\t\tPASSWORD\t\tCARD BALANCE\n");
     printf("\n============================================================================================\n");
@@ -136,27 +140,71 @@ void all_stud()
 	system("pause");
 }
 
+void remove_dish()
+{
+		system("cls");
+        system("color e");
+		int c;
+		dish *head;
+		fromfile_dish(&head);
+        dish *temp, *prev;
+        temp=head;
+        printf("\n\n\tREMOVE DISH\n");
+        printf("\n\n\tEnter the code of the Dish you wish to remove from menu : ");
+		scanf("%d",&c);
+
+
+        while (temp != NULL && temp->info.code != c)
+        {
+            prev = temp;
+            temp = temp->next;
+        }
+
+        if (temp == NULL)
+        {
+            printf("\a\n\tDISH NOT FOUND :(");
+            printf("\n\tGOING BACK...");
+            for(int i=0;i<16;i++)
+                usleep(100000);
+            return;
+        }
+        else
+        {
+            prev->next = temp->next;
+            free(temp);
+            remove("menu.dat");
+            save_dish(head);
+            printf("\n\n\tMENU UPDATED!!!!!");
+            for(int i=0;i<20;i++)
+                usleep(100000);
+        }
+
+}
+
 void admin_menu()
 {
 	system("cls");
-	system("color c");
+	system("color b");
 	int ch;
 
         printf("\n\n\tADMIN\n");
 		printf("\n\n\t1. ADD DISH");
-		printf("\n\n\t2. CURRENT MENU");
-		printf("\n\n\t3. ALL STUDENT DETAILS");
-		printf("\n\n\t4. EXIT");
+		printf("\n\n\t2. REMOVE DISH");
+		printf("\n\n\t3. CURRENT MENU");
+		printf("\n\n\t4. ALL STUDENT DETAILS");
+		printf("\n\n\t5. BACK");
 		printf("\n\n\tPlease Select Your Option : ");
 		scanf("%d",&ch);
 		switch(ch)
-		{	case 3:all_stud();
+		{	case 4:all_stud();
 				 break;
 			case 1: add(&head_d);
 				 break;
-            case 2:menu();
+            case 2: remove_dish();
 				 break;
-			case 4: return;
+            case 3:menu();
+				 break;
+			case 5: return;
 			default: printf("\a");
 		}
 		admin_menu();
