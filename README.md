@@ -11,7 +11,7 @@ Thus, to run the project:
 
 ### ~WORK DISTRIBUTION: The functions made by each group member have been mentioned against their names.
 
-AASTHA DOGRA      (1910110464)   : menu(), add(), health(), order(),mess_menu().
+AASTHA DOGRA      (1910110464)   : menu(), add(), health(), order().
                  
 KAAVYA JAIN       (1910110185)   : donate_menu(), guest_menu(), payment_student(), card_details(), remove_dish()
                  
