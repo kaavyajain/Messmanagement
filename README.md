@@ -1,4 +1,6 @@
-# *** MESS(ALA-CARTE) MANAGEMENT SYSTEM ***
+# *** CRAVEZIA MESS MANAGEMENT SYSTEM ***
+### The solution to all your cravings!
+
 >>> HOW TO RUN :::
 
 In the zip file attached there is a file named “project.cbp”. 
@@ -11,7 +13,7 @@ Thus, to run the project:
 
 AASTHA DOGRA      (1910110464)   : menu(), add(), health(), order()
                  
-KAAVYA JAIN       (1910110185)   : donate_menu(), guest_menu(), payment_student(), card_details()
+KAAVYA JAIN       (1910110185)   : donate_menu(), guest_menu(), payment_student(), card_details(), remove_dish()
                  
 NISHTHA GUPTA     (1910110260)   : login(), signup(), fromfile_stud(), fromfile_dish(), save_stud(),                                        save_dish()
                  
